@@ -7,7 +7,9 @@ from app import models
 
 from app.routers.documents import router as documents_router
 
-Base.metadata.create_all(bind=engine)
+with engine.begin() as connection:
+    connection.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+    Base.metadata.create_all(bind=connection)
 
 
 
@@ -20,6 +22,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
         "http://localhost:5173",
         "http://127.0.0.1:5173"
     ],

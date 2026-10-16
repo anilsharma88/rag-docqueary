@@ -194,10 +194,17 @@ Example:
 
 ```env
 DATABASE_URL=postgresql+psycopg://docuquery:docuquery@localhost:5432/docuquery
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_azure_openai_key
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_DEPLOYMENT=your_model_deployment_name
+AZURE_OPENAI_API_VERSION=2024-10-21
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
 ```
 
-Never commit your real `.env` file or API key to GitHub.
+Use the endpoint and deployment name from your Azure AI Foundry/OpenAI resource. Never commit your real `.env` file or API key to GitHub.
+
+The Admin portal uses HTTP Basic authentication. The defaults are `admin` / `admin`; set a private `ADMIN_PASSWORD` before exposing the app beyond local development. Admins can upload PDF, TXT, and legacy DOC files and manage the document library. Regular users can select indexed documents and ask questions from the Ask documents view.
 
 ---
 

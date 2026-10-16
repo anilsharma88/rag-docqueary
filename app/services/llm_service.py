@@ -1,16 +1,24 @@
-from openai import OpenAI
+from openai import AzureOpenAI
 
 from app.config import settings
 
-
-client = OpenAI(
-    api_key=settings.OPENAI_API_KEY
-)
 
 def generate_answer(
     question: str,
     contexts: list[str]
 ) -> str:
+    if not settings.AZURE_OPENAI_ENDPOINT:
+        raise RuntimeError("AZURE_OPENAI_ENDPOINT is not configured")
+    if not settings.AZURE_OPENAI_DEPLOYMENT:
+        raise RuntimeError("AZURE_OPENAI_DEPLOYMENT is not configured")
+    if not settings.OPENAI_API_KEY:
+        raise RuntimeError("OPENAI_API_KEY is not configured")
+
+    client = AzureOpenAI(
+        api_key=settings.OPENAI_API_KEY,
+        azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+        api_version=settings.AZURE_OPENAI_API_VERSION,
+    )
 
     labeled_contexts = []
 
@@ -44,9 +52,9 @@ Question:
 Answer:
 """
 
-    response = client.responses.create(
-        model="gpt-5.6-luna",
-        input=prompt
+    response = client.chat.completions.create(
+        model=settings.AZURE_OPENAI_DEPLOYMENT,
+        messages=[{"role": "user", "content": prompt}],
     )
 
-    return response.output_text
+    return response.choices[0].message.content or ""
