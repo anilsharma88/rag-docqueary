@@ -204,7 +204,17 @@ ADMIN_PASSWORD=admin
 
 Use the endpoint and deployment name from your Azure AI Foundry/OpenAI resource. Never commit your real `.env` file or API key to GitHub.
 
-The Admin portal uses HTTP Basic authentication. The defaults are `admin` / `admin`; set a private `ADMIN_PASSWORD` before exposing the app beyond local development. Admins can upload PDF, TXT, and legacy DOC files and manage the document library. Regular users can select indexed documents and ask questions from the Ask documents view.
+The Admin portal uses HTTP Basic authentication. The defaults are `admin` / `admin`; set a private `ADMIN_PASSWORD` before exposing the app beyond local development. Admins can upload PDF, TXT, DOC, DOCX, XLS, XLSX, and XLSM files, edit document titles, download, reprocess, inspect initial version records, and manage the document library. Regular users can select indexed documents and ask questions from the Knowledge assistant.
+
+### Enterprise workspace capabilities
+
+- Responsive workspace navigation includes dashboard, document library, knowledge assistant, HR workspace, categories, people/access preview, audit trail, and saved answers.
+- Admin upload, deletion, metadata changes, downloads, reprocessing, and CV endpoints are enforced by the API using HTTP Basic credentials. For production, replace this development credential flow with Microsoft Entra ID/OIDC, enforce TLS, and configure a non-default secret.
+- Employee document list, document lookup, and RAG retrieval exclude CVs, non-`All employees` access groups, and Confidential/Restricted records. HR CV upload and skill search require admin credentials; matching is exact text matching and is intended only to assist human review.
+- Successful knowledge queries store only category and timestamp for aggregate analytics; query text is kept in the browser's local history, not on the server.
+- Dashboard metrics, uploads, audit events, and CV search use live API data. If the document API is unavailable, the UI displays sample documents. The development role switch is compiled only in Vite development mode.
+
+Some enterprise workflows are still preview-only: category edits and role/user changes are stored in the browser rather than a shared server-side directory; the Admin/Employee roles are not backed by an enterprise identity provider; version history currently records the initial upload but there is not yet a replacement/version-upload workflow; file preview and pagination are not implemented; CV extracted fields are entered/verified manually, and semantic matching is not enabled. Do not treat the local HTTP Basic defaults or browser role preview as production authorization.
 
 ---
 

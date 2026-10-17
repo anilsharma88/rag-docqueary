@@ -65,3 +65,6 @@ uvicorn==0.52.4
 uvloop==0.22.1
 watchfiles==1.2.0
 websockets==17.0.1
+python-docx==1.2.0
+openpyxl==3.1.5
+xlrd==2.0.2
