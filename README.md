@@ -345,10 +345,6 @@ Select a document and ask natural-language questions based on its contents.
 
 ![DocuQuery Question Answering](docs/screenshots/docuquery-answer.png)
 
-### Source-Aware Retrieval
 
-DocuQuery displays the document chunks and similarity scores used to support each generated answer.
-
-![DocuQuery Sources](docs/screenshots/docuquery-sources.png)
 
 
