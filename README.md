@@ -1,8 +1,7 @@
 # DocuQuery — AI-Powered Document Q&A
 
-DocuQuery is a full-stack Retrieval-Augmented Generation (RAG) application that allows users to upload PDF documents, perform semantic search, and ask natural-language questions about their contents.
-
-The application extracts and chunks document text, generates vector embeddings, stores them in PostgreSQL using pgvector, retrieves the most relevant chunks for a question, and uses an LLM to generate a context-aware answer with source references.
+DocuQuery full-stack Retrieval-Augmented Generation (RAG) application engineered as a high-impact Forward Deployed Engineer (FDE) use case. The platform transforms isolated, unstructured PDF repositories into dynamic, queryable knowledge bases by allowing users to securely upload documents, perform deep semantic searches, and receive grounded, natural-language answers.
+By resolving core enterprise data challenges—such as text extraction, contextual chunking, and hallucination control—this application serves as a repeatable blueprint for deploying scalable AI solutions within secure client environments
 
 ---
 
