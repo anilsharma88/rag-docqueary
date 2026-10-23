@@ -193,13 +193,18 @@ Create a `.env` file in the project root.
 Example:
 
 ```env
-DATABASE_URL=postgresql+psycopg://docuquery:docuquery@localhost:5432/docuquery
-OPENAI_API_KEY=your_azure_openai_key
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT=your_model_deployment_name
-AZURE_OPENAI_API_VERSION=2024-10-21
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin
+# Azure OpenAI Configuration
+AZURE_OPENAI_ENDPOINT=https://azureopenaitestdehdgyedt.openai.azure.com/
+AZURE_OPENAI_DEPLOYMENT=gpt-chat-latest
+OPENAI_API_KEY=
+# PostgreSQL Configuration
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=mysecurepassword123
+POSTGRES_DB=docuquery_db
+DATABASE_URL=postgresql://postgres:mysecurepassword123@db:5432/docuquery_db
+
+
+
 ```
 
 Use the endpoint and deployment name from your Azure AI Foundry/OpenAI resource. Never commit your real `.env` file or API key to GitHub.
