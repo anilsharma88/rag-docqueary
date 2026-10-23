@@ -222,10 +222,18 @@ Some enterprise workflows are still preview-only: category edits and role/user c
 
 ---
 
-### 6. Start the FastAPI backend
+###  Start app
 
 ```bash
-uvicorn app.main:app --reload --reload-dir app
+#Stop running instances
+docker compose down
+
+# Clear out the corrupted volume metadata
+docker volume rm docuquery_pgdata 2>/dev/null || docker volume prune -f
+
+# Rebuild and launch the system
+docker compose up -d --build
+
 ```
 
 Backend:
@@ -240,22 +248,11 @@ Swagger:
 http://127.0.0.1:8000/docs
 ```
 
----
-
-### 7. Start the React frontend
-
-Open another terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
 
 Frontend:
 
 ```text
-http://localhost:5173
+http://localhost:3000
 ```
 
 ---
