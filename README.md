@@ -348,17 +348,3 @@ DocuQuery displays the document chunks and similarity scores used to support eac
 ![DocuQuery Sources](docs/screenshots/docuquery-sources.png)
 
 
-
----
-
-## Author
-
-**Vikas Nair**
-
-Software Engineer focused on backend systems, full-stack development, AI applications, and scalable APIs.
-
----
-
-## License
-
-This project is currently intended for educational and portfolio purposes.
